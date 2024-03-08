@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c88k0pg7qwg5p" path="res://Scenes/player.tscn" id="1_ttfir"]
 [ext_resource type="Texture2D" uid="uid://bqb3n2116mc3w" path="res://Assets/icon.svg" id="2_ywnnf"]
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="4_shjbx"]
-[ext_resource type="Shader" path="res://Scripts/psx.gdshader" id="5_qsh6d"]
+[ext_resource type="Shader" path="res://Materials/psx.gdshader" id="5_qsh6d"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="6_n1otv"]
 [ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
 [ext_resource type="PackedScene" uid="uid://cg5t3ic6nmyhl" path="res://Props/campfire.tscn" id="7_ujtdd"]
@@ -45,6 +45,8 @@ shadow_bias = 0.2
 environment = SubResource("Environment_csfex")
 
 [node name="Player" parent="." instance=ExtResource("1_ttfir")]
+transform = Transform3D(1.0005, 0, 0, 0, 1.0005, 0, 0, 0, 1.0005, 0, 2, 0)
+floor_max_angle = 1.0472
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, -3)
@@ -63,7 +65,7 @@ size = Vector3(1, 14, 121)
 material = SubResource("StandardMaterial3D_n8idd")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 6.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.9651, 6.4583, 0.0192146)
 use_collision = true
 size = Vector3(1, 14, 121)
 material = SubResource("StandardMaterial3D_n8idd")
@@ -81,7 +83,7 @@ size = Vector3(1, 14, 121)
 material = SubResource("StandardMaterial3D_n8idd")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82661, 2.2406, -0.104877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83503, 5.71167, -0.0310509)
 use_collision = true
 radius = 2.13244
 radial_segments = 32

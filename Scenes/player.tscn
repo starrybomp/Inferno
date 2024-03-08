@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c88k0pg7qwg5p"]
+[gd_scene load_steps=7 format=3 uid="uid://c88k0pg7qwg5p"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3d0ks"]
 [ext_resource type="PackedScene" uid="uid://dj6uvqo20v1ma" path="res://Scenes/gun.tscn" id="2_d23oh"]
+[ext_resource type="Script" path="res://Scripts/Viewport.gd" id="2_yfayr"]
+[ext_resource type="Script" path="res://Scripts/ViewportCamera.gd" id="4_kbejj"]
 
 [sub_resource type="Environment" id="Environment_7covu"]
 
@@ -15,10 +17,29 @@ script = ExtResource("1_3d0ks")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000752807, 0.49743, 6.4373e-06)
+cull_mask = 1048573
 environment = SubResource("Environment_7covu")
 
 [node name="Gun" parent="Head/Camera3D" instance=ExtResource("2_d23oh")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.952957, -0.549042, -1.12573)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.553, -0.4, -1.126)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_dqkpc")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+script = ExtResource("2_yfayr")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+cull_mask = 1048574
+script = ExtResource("4_kbejj")

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bv2bj1k5utyoe"]
 
-[ext_resource type="Shader" path="res://Scripts/psx.gdshader" id="1_tt8aa"]
+[ext_resource type="Shader" path="res://Materials/psx.gdshader" id="1_tt8aa"]
 
 [resource]
 render_priority = 0

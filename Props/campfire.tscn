@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg5t3ic6nmyhl"]
+[gd_scene load_steps=14 format=3 uid="uid://cg5t3ic6nmyhl"]
 
 [ext_resource type="Texture2D" uid="uid://bbc7qvcylyvcf" path="res://Models/campfire_0.png" id="1_nlx3y"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_i5od8"]
@@ -111,25 +111,67 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qope0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyigo"]
-size = Vector3(0.63916, 0.240137, 0.678162)
+size = Vector3(0.63916, 0.145337, 0.678162)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xs4kq"]
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 90.0
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+gravity = Vector3(2.08165e-12, 9.8, 2.08165e-12)
+scale_min = 0.5
+scale_max = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mpfs"]
+next_pass = ExtResource("2_i5od8")
+albedo_color = Color(0.133196, 0.133196, 0.133196, 1)
+emission_enabled = true
+emission = Color(0.146226, 0.0738778, 0.109178, 1)
+emission_energy_multiplier = 2.0
+texture_filter = 2
+texture_repeat = false
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_22ec7"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_3mpfs")
+size = Vector2(0.05, 0.05)
+orientation = 2
 
 [node name="Campfire" type="StaticBody3D"]
 
-[node name="plank" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, -9.90579e-09, 0, 1, 0, 2.26721e-09, 0, 1, 0, 0, 0)
+
+[node name="plank" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.793353, 0, 0.608761, 0, 1, 0, -0.608761, 0, 0.793353, 0, 0, 0)
 mesh = SubResource("ArrayMesh_eyx3e")
 skeleton = NodePath("")
 
-[node name="plank2" type="MeshInstance3D" parent="."]
+[node name="plank2" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.67559, 0, 0.737277, 0, 1, 0, -0.737277, 0, 0.67559, 0, 0, 0)
 mesh = SubResource("ArrayMesh_cypth")
 skeleton = NodePath("")
 
-[node name="plank3" type="MeshInstance3D" parent="."]
+[node name="plank3" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ie6u5")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164338, 0.132808, 0.0504456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164338, 0.085408, 0.0504456)
 shape = SubResource("BoxShape3D_kyigo")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274812, 0)
+cast_shadow = 0
+amount = 32
+amount_ratio = 0.5
+lifetime = 1.25
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xs4kq")
+draw_pass_1 = SubResource("PlaneMesh_22ec7")

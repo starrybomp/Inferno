@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dj6uvqo20v1ma"]
 
-[ext_resource type="Shader" path="res://Scripts/psx.gdshader" id="1_guiko"]
+[ext_resource type="Shader" path="res://Materials/psx.gdshader" id="1_guiko"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywghb"]
 render_priority = 0
@@ -108,7 +108,8 @@ _data = {
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.811158, -0.393028, -0.941623)
 
 [node name="Model" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0.05)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+layers = 2
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_0numl")
 skeleton = NodePath("../../../../..")
@@ -119,5 +120,5 @@ libraries = {
 }
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0486077, -0.0939732)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0486077, 0.232352)
 target_position = Vector3(0, 0, -1)

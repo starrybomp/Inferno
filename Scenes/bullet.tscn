@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://gyx4gmmu65fh"]
 
-[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_kp5yn"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_kp5yn"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_g3xeh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40qh1"]
