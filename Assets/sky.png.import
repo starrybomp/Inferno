@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlanyvkta33a1"
-path.s3tc="res://.godot/imported/grass_top.png-38fb5c2f3a0fd1a33c4ab8ddbef65b1a.s3tc.ctex"
+uid="uid://0nhu8m5s7w2n"
+path.s3tc="res://.godot/imported/sky.png-5ec5e10dfc6f547a0e51c441f3354a67.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://grass_top.png"
-dest_files=["res://.godot/imported/grass_top.png-38fb5c2f3a0fd1a33c4ab8ddbef65b1a.s3tc.ctex"]
+source_file="res://Assets/sky.png"
+dest_files=["res://.godot/imported/sky.png-5ec5e10dfc6f547a0e51c441f3354a67.s3tc.ctex"]
 
 [params]
 

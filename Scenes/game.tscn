@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://6fy03xgp2bld"]
+
+[ext_resource type="PackedScene" uid="uid://c88k0pg7qwg5p" path="res://Scenes/player.tscn" id="1_ttfir"]
+[ext_resource type="Texture2D" uid="uid://bqb3n2116mc3w" path="res://Assets/icon.svg" id="2_ywnnf"]
+[ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="4_shjbx"]
+[ext_resource type="Shader" path="res://Scripts/psx.gdshader" id="5_qsh6d"]
+[ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
+
+[sub_resource type="Environment" id="Environment_csfex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkbct"]
+albedo_texture = ExtResource("2_ywnnf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5y8ye"]
+material = SubResource("StandardMaterial3D_wkbct")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qeifo"]
+render_priority = 0
+shader = ExtResource("5_qsh6d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn87b"]
+next_pass = SubResource("ShaderMaterial_qeifo")
+albedo_texture = ExtResource("4_shjbx")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.316519
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvojb"]
+render_priority = 0
+shader = ExtResource("5_qsh6d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8idd"]
+albedo_color = Color(0, 0, 0, 0)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gid6x"]
+albedo_texture = ExtResource("6_rdbj5")
+
+[node name="Game" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.303, 0)
+shadow_enabled = true
+shadow_bias = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_csfex")
+
+[node name="Player" parent="." instance=ExtResource("1_ttfir")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, -3)
+mesh = SubResource("PlaneMesh_5y8ye")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_jn87b")
+material_overlay = SubResource("ShaderMaterial_tvojb")
+gi_mode = 2
+use_collision = true
+size = Vector3(120, 1, 120)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 6.5, 0)
+use_collision = true
+size = Vector3(1, 14, 121)
+material = SubResource("StandardMaterial3D_n8idd")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 6.5, 0)
+use_collision = true
+size = Vector3(1, 14, 121)
+material = SubResource("StandardMaterial3D_n8idd")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6.5, 60)
+use_collision = true
+size = Vector3(1, 14, 121)
+material = SubResource("StandardMaterial3D_n8idd")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6.5, -60)
+use_collision = true
+size = Vector3(1, 14, 121)
+material = SubResource("StandardMaterial3D_n8idd")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82661, 2.2406, -0.104877)
+use_collision = true
+radius = 2.13244
+radial_segments = 32
+rings = 13
+material = SubResource("StandardMaterial3D_gid6x")
