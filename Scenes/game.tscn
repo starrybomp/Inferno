@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://6fy03xgp2bld"]
+[gd_scene load_steps=16 format=3 uid="uid://6fy03xgp2bld"]
 
 [ext_resource type="PackedScene" uid="uid://c88k0pg7qwg5p" path="res://Scenes/player.tscn" id="1_ttfir"]
 [ext_resource type="Texture2D" uid="uid://bqb3n2116mc3w" path="res://Assets/icon.svg" id="2_ywnnf"]
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="4_shjbx"]
+[ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="5_8g5ab"]
 [ext_resource type="Shader" path="res://Materials/psx.gdshader" id="5_qsh6d"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="6_n1otv"]
 [ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
@@ -53,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 
 mesh = SubResource("PlaneMesh_5y8ye")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00223398, 4.76837e-07, 0.0110517)
 material_override = SubResource("StandardMaterial3D_jn87b")
 gi_mode = 2
 use_collision = true
@@ -92,3 +94,33 @@ material = SubResource("StandardMaterial3D_gid6x")
 
 [node name="Campfire" parent="." instance=ExtResource("7_ujtdd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0467949, 0.5, 2.74787)
+
+[node name="Tree" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.501, 0.500001, -15.8358)
+
+[node name="Tree2" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.50639, 0.500001, -11.8209)
+
+[node name="Tree3" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.1311, 0.500001, -3.94555)
+
+[node name="Tree4" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 13.0484, 0.500001, -14.4591)
+
+[node name="Tree5" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.03157, 0.500001, -2.61402)
+
+[node name="Tree6" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 14.7794, 0.5, -4.53999)
+
+[node name="Tree7" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 12.9523, 0.500001, 5.3949)
+
+[node name="Tree8" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.08754, 0.500001, -7.89773)
+
+[node name="Tree9" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.400121, 0.500001, -13.1331)
+
+[node name="Tree10" parent="." instance=ExtResource("5_8g5ab")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.7294, 0.5, -17.2621)
