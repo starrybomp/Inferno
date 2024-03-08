@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://6fy03xgp2bld"]
+[gd_scene load_steps=15 format=3 uid="uid://6fy03xgp2bld"]
 
 [ext_resource type="PackedScene" uid="uid://c88k0pg7qwg5p" path="res://Scenes/player.tscn" id="1_ttfir"]
 [ext_resource type="Texture2D" uid="uid://bqb3n2116mc3w" path="res://Assets/icon.svg" id="2_ywnnf"]
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="4_shjbx"]
 [ext_resource type="Shader" path="res://Scripts/psx.gdshader" id="5_qsh6d"]
+[ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="6_n1otv"]
 [ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
+[ext_resource type="PackedScene" uid="uid://cg5t3ic6nmyhl" path="res://Props/campfire.tscn" id="7_ujtdd"]
 
 [sub_resource type="Environment" id="Environment_csfex"]
 
@@ -24,15 +26,12 @@ albedo_texture = ExtResource("4_shjbx")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.316519
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvojb"]
-render_priority = 0
-shader = ExtResource("5_qsh6d")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8idd"]
 albedo_color = Color(0, 0, 0, 0)
 metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gid6x"]
+next_pass = ExtResource("6_n1otv")
 albedo_texture = ExtResource("6_rdbj5")
 
 [node name="Game" type="Node3D"]
@@ -53,7 +52,6 @@ mesh = SubResource("PlaneMesh_5y8ye")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material_override = SubResource("StandardMaterial3D_jn87b")
-material_overlay = SubResource("ShaderMaterial_tvojb")
 gi_mode = 2
 use_collision = true
 size = Vector3(120, 1, 120)
@@ -89,3 +87,6 @@ radius = 2.13244
 radial_segments = 32
 rings = 13
 material = SubResource("StandardMaterial3D_gid6x")
+
+[node name="Campfire" parent="." instance=ExtResource("7_ujtdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0467949, 0.5, 2.74787)
