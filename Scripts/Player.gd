@@ -20,10 +20,17 @@ const FOV_CHANGE = 1.25
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var health = 0
+var clip = 12
+var max_clip = 12
+var damage = 2
+
 # Bullets
 var bullet = load("res://Scenes/bullet.tscn")
 var instance 
 
+@onready var ammo_label = $"CanvasLayer/Main/Ammo Label"
+@onready var health_label = $"CanvasLayer/Main/Health Label"
 @onready var camera = $Head/Camera3D
 @onready var head = $Head
 @onready var gun_anim = $Head/Camera3D/Gun/AnimationPlayer
@@ -79,14 +86,24 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
 	# Shooting
+	if clip <= 0:
+		$"CanvasLayer/Main/No Ammo".visible = true
+	else:
+		$"CanvasLayer/Main/No Ammo".visible = false
 	if Input.is_action_pressed("fire"):
-		if !gun_anim.is_playing():
+		if !gun_anim.is_playing() and clip > 0:
 			gun_anim.play("shoot")
 			instance = bullet.instantiate()
 			instance.position = gun_barrel.global_position
 			instance.transform.basis = gun_barrel.global_transform.basis
 			get_parent().add_child(instance)
-
+			clip -= 1
+			ammo_label.text = str(clip) + "/" + str(max_clip)
+	if Input.is_action_just_pressed("reload"):
+		if clip < max_clip:
+			gun_anim.play("reload")
+			clip = max_clip
+			ammo_label.text = str(clip) + "/" + str(max_clip)
 	move_and_slide()
 
 func _headbob(time) -> Vector3:

@@ -1,15 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://c88k0pg7qwg5p"]
+[gd_scene load_steps=12 format=3 uid="uid://c88k0pg7qwg5p"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3d0ks"]
 [ext_resource type="PackedScene" uid="uid://dj6uvqo20v1ma" path="res://Scenes/gun.tscn" id="2_d23oh"]
 [ext_resource type="Script" path="res://Scripts/Viewport.gd" id="2_yfayr"]
 [ext_resource type="Script" path="res://Scripts/ViewportCamera.gd" id="4_kbejj"]
+[ext_resource type="FontFile" uid="uid://dwgop00bguyaw" path="res://Assets/Monogram.ttf" id="5_4b6wj"]
+[ext_resource type="Texture2D" uid="uid://0j8u0vsp7whr" path="res://Assets/crosshair003.png" id="6_yfcge"]
 
 [sub_resource type="Environment" id="Environment_7covu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dqkpc"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="LabelSettings" id="LabelSettings_kq8v3"]
+line_spacing = 2.0
+font = ExtResource("5_4b6wj")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_nrg51"]
+line_spacing = 2.0
+font = ExtResource("5_4b6wj")
+font_size = 84
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvygx"]
+font = ExtResource("5_4b6wj")
+font_size = 48
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_3d0ks")
 
@@ -43,3 +59,119 @@ script = ExtResource("2_yfayr")
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 cull_mask = 1048574
 script = ExtResource("4_kbejj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Health Panel" type="Panel" parent="CanvasLayer/Main"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -112.0
+offset_right = 464.0
+offset_bottom = -32.0
+grow_vertical = 0
+
+[node name="Health Label" type="Label" parent="CanvasLayer/Main"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -104.0
+offset_right = 507.0
+offset_bottom = -47.0
+grow_vertical = 0
+text = "Health: 100/100"
+label_settings = SubResource("LabelSettings_kq8v3")
+
+[node name="Ammo Panel" type="Panel" parent="CanvasLayer/Main"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -104.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Ammo Label" type="Label" parent="CanvasLayer/Main" groups=["player"]]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -104.0
+offset_right = -48.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "12/12"
+label_settings = SubResource("LabelSettings_nrg51")
+horizontal_alignment = 2
+
+[node name="Crosshair2" type="Control" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Sprite2D" parent="CanvasLayer/Main/Crosshair2"]
+texture_filter = 1
+position = Vector2(20, 20)
+texture = ExtResource("6_yfcge")
+
+[node name="No Ammo" type="Control" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Main/No Ammo"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -44.0
+offset_top = 32.0
+offset_right = 100.0
+offset_bottom = 70.0
+text = "No Ammo!"
+label_settings = SubResource("LabelSettings_rvygx")
+horizontal_alignment = 1

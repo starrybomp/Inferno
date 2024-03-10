@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gyx4gmmu65fh"]
+[gd_scene load_steps=8 format=3 uid="uid://gyx4gmmu65fh"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_kp5yn"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_g3xeh"]
@@ -23,14 +23,17 @@ initial_velocity_max = 5.0
 material = SubResource("StandardMaterial3D_40qh1")
 size = Vector3(0.04, 0.04, 0.04)
 
-[node name="Bullet" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mymt4"]
+size = Vector3(0.0557251, 0.0479446, 1)
+
+[node name="Bullet" type="Area3D" groups=["bullet"]]
 script = ExtResource("1_kp5yn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0
 mesh = SubResource("BoxMesh_dg5c6")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." groups=["bullet"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.358416)
 target_position = Vector3(0, 0, -1)
 
@@ -46,4 +49,9 @@ draw_pass_1 = SubResource("BoxMesh_cusxs")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.000837038, 2.08165e-12)
+shape = SubResource("BoxShape3D_mymt4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dotqbr6iqsd4f"
-path.s3tc="res://.godot/imported/tree_0.png-7e519a9c8c01a2cd95fb2f0c4c017ba1.s3tc.ctex"
+uid="uid://c6e0uv1iklsoc"
+path.s3tc="res://.godot/imported/April 8 2a.png-2b6819c24d376060736215811458a8c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "abf504f73e97ccf1eadc9b9e4d993d83"
-}
 
 [deps]
 
-source_file="res://Scripts/tree_0.png"
-dest_files=["res://.godot/imported/tree_0.png-7e519a9c8c01a2cd95fb2f0c4c017ba1.s3tc.ctex"]
+source_file="res://Assets/April 8 2a.png"
+dest_files=["res://.godot/imported/April 8 2a.png-2b6819c24d376060736215811458a8c1.s3tc.ctex"]
 
 [params]
 

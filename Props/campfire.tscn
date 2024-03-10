@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cg5t3ic6nmyhl"]
 
-[ext_resource type="Texture2D" uid="uid://bbc7qvcylyvcf" path="res://Models/campfire_0.png" id="1_nlx3y"]
+[ext_resource type="Texture2D" uid="uid://cv8wenal6fvpb" path="res://Models/campfire_0.png" id="1_nlx3y"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_i5od8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7rw"]

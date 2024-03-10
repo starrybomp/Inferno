@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://b76tqmkia0aeb"]
+
+[ext_resource type="Script" path="res://Scripts/april.gd" id="1_d8yd1"]
+[ext_resource type="Texture2D" uid="uid://c6e0uv1iklsoc" path="res://Assets/April 8 2a.png" id="1_mqxgu"]
+[ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_rhvp3"]
+[ext_resource type="FontFile" uid="uid://dwgop00bguyaw" path="res://Assets/Monogram.ttf" id="4_77gli"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sil3"]
+next_pass = ExtResource("2_rhvp3")
+transparency = 1
+albedo_texture = ExtResource("1_mqxgu")
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lw718"]
+material = SubResource("StandardMaterial3D_7sil3")
+orientation = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bo2mb"]
+radius = 0.706859
+height = 2.20233
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8b3d"]
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 90.0
+initial_velocity_max = 8.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oysy6"]
+next_pass = ExtResource("2_rhvp3")
+albedo_color = Color(1, 0.0392157, 0, 1)
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_synwb"]
+material = SubResource("StandardMaterial3D_oysy6")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[node name="April" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_d8yd1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.54979e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 7.54979e-08, -3.30012e-15, 2.08165e-12, 1, 2.08165e-12)
+mesh = SubResource("PlaneMesh_lw718")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.115, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_bo2mb")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 1.12
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95876, 0)
+emitting = false
+amount = 16
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_e8b3d")
+draw_pass_1 = SubResource("PlaneMesh_synwb")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2615, 0)
+billboard = 1
+text = "Help!"
+font = ExtResource("4_77gli")
+font_size = 60

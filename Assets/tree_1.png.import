@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv8wenal6fvpb"
-path.s3tc="res://.godot/imported/campfire_0.png-a8b94a0c5257c3d850f1dc7153c1e154.s3tc.ctex"
+uid="uid://coq8ipe7rckl1"
+path.s3tc="res://.godot/imported/tree_1.png-5f9d96b714a8be813127385abd8cd1ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cdac9663130585f1cf3e46a3e9e86260"
+"md5": "e8c76028c5447e8a4eb7be5ef9626150"
 }
 
 [deps]
 
-source_file="res://campfire_0.png"
-dest_files=["res://.godot/imported/campfire_0.png-a8b94a0c5257c3d850f1dc7153c1e154.s3tc.ctex"]
+source_file="res://Assets/tree_1.png"
+dest_files=["res://.godot/imported/tree_1.png-5f9d96b714a8be813127385abd8cd1ac.s3tc.ctex"]
 
 [params]
 
