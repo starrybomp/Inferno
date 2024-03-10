@@ -135,4 +135,3 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.7294, 0.5, -36.2621)
 
 [node name="April" parent="." instance=ExtResource("9_kkrt6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4)
-player_path = NodePath("../Player")
