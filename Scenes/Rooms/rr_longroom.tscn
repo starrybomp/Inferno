@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6mbrwb5esn1c"]
+[gd_scene load_steps=6 format=3 uid="uid://c6mbrwb5esn1c"]
 
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="1_l46sc"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_4rjep"]
 [ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="3_smknn"]
-[ext_resource type="PackedScene" uid="uid://b76tqmkia0aeb" path="res://Scenes/april.tscn" id="4_ft5sx"]
+[ext_resource type="PackedScene" path="res://Scenes/april.tscn" id="4_ft5sx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45nns"]
 next_pass = ExtResource("2_4rjep")
@@ -11,50 +11,12 @@ albedo_texture = ExtResource("1_l46sc")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n7aj"]
-albedo_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
-emission_enabled = true
-emission_energy_multiplier = 2.0
-
 [node name="rr_longroom" type="Node3D"]
 
 [node name="Ground" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(12.5, 0.5, 50)
 material = SubResource("StandardMaterial3D_45nns")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 6.25, 2.08165e-12)
-use_collision = true
-size = Vector3(1, 13, 50)
-material = SubResource("StandardMaterial3D_8n7aj")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.25, 2.08165e-12)
-use_collision = true
-size = Vector3(1, 13, 50)
-material = SubResource("StandardMaterial3D_8n7aj")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.08165e-12, 6.25, -25)
-use_collision = true
-size = Vector3(1, 13, 12.5)
-material = SubResource("StandardMaterial3D_8n7aj")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6.25, 25)
-use_collision = true
-size = Vector3(1, 13, 12.5)
-material = SubResource("StandardMaterial3D_8n7aj")
-
-[node name="Tree" parent="CSGBox3D4" instance=ExtResource("3_smknn")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, -7.10543e-15, 0, 3, -9, -6.25, -4)
-
-[node name="Tree2" parent="CSGBox3D4" instance=ExtResource("3_smknn")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, -7.10543e-15, 0, 3, -10, -6.25, 4.37114e-07)
-
-[node name="Tree3" parent="CSGBox3D4" instance=ExtResource("3_smknn")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, -7.10543e-15, 0, 3, -4, -6.25, 2)
 
 [node name="Tree" parent="." instance=ExtResource("3_smknn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4, 0, 9)
@@ -88,6 +50,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
 [node name="April3" parent="." instance=ExtResource("4_ft5sx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 3.47302e-08, 1, 0, -1, 3.47302e-08, 0, 12, 0)

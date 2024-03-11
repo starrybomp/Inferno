@@ -45,6 +45,8 @@ func handle_22(cell:Node3D,dir:String):
 
 func _ready():
 	generate()
+	create_dungeon()
+	$NavigationRegion3D.bake_navigation_mesh(false)
 
 func set_start_dungeon(val:bool)->void:
 	if Engine.is_editor_hint():
@@ -63,8 +65,6 @@ func set_border_size(val : int)->void:
 @export var room_number : int = 4
 @export var room_margin : int = 1
 @export var room_recursion : int = 15
-@export var min_room_size : int = 2 
-@export var max_room_size : int = 4
 @export_multiline var custom_seed : String = "" : set = set_seed 
 func set_seed(val:String)->void:
 	custom_seed = val
@@ -72,9 +72,12 @@ func set_seed(val:String)->void:
 
 var room_tiles : Array[PackedVector3Array] = []
 var room_positions : PackedVector3Array = []
+var room_start_positions : PackedVector3Array = []
 var room_scenes: Array = []
 
 # border, mine: 
+
+
 
 func create_dungeon():
 	for c in $Mesh.get_children():
@@ -88,7 +91,7 @@ func create_dungeon():
 			dun_cell.position = Vector3(cell) + Vector3(0.5,0,0.5)
 			$Mesh.add_child(dun_cell)
 			dun_cell.set_owner($Mesh.owner)
-			t +=1
+			t += 1
 			for i in 4:
 				var cell_n : Vector3i = cell + directions.values()[i]
 				var cell_n_index : int = grid_map.get_cell_item(cell_n)
@@ -104,11 +107,13 @@ func create_dungeon():
 		t += 1
 		var path: String = room_scenes[i]
 		var scene = await load(path)
-		var room = scene.instantiate()
-		room.position = room_positions[i]
+		var room = await scene.instantiate()
+		room.position = Vector3(room_positions[i].x, room_positions[i].y + 0.5, room_positions[i].z)
 		$Mesh.add_child(room)
 		room.set_owner($Mesh.owner)
 		if t%10 == 9 : await get_tree().create_timer(0).timeout
+	var start_pos = Vector3(player_start_pos.x, player_start_pos.y + 2, player_start_pos.z)
+	$Player.position = start_pos
 
 func visualize_border():
 	grid_map.clear()
@@ -117,6 +122,7 @@ func visualize_border():
 		grid_map.set_cell_item( Vector3i(i,0,border_size),3)
 		grid_map.set_cell_item( Vector3i(border_size,0,i),3)
 		grid_map.set_cell_item( Vector3i(-1,0,i),3)
+	$DirectionalLight3D.position = Vector3(border_size / 2, 25,  border_size / 2)
 
 func generate():
 	for c in $Mesh.get_children():
@@ -218,7 +224,8 @@ func make_room(rec: int) -> void:
 	var pos : Vector3 = Vector3(avg_x,0,avg_z)
 	if room_positions.size() == 0:
 		player_start_pos = pos
-	room_positions.append(start_pos)
+	room_positions.append(pos)
+	room_start_positions.append(start_pos)
 	
 func create_hallways(hallway_graph: AStar2D):
 	var hallways : Array[PackedVector3Array] = []
