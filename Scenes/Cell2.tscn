@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://wvugsw5fe28y"]
+
+[ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="1_pocbq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwfex"]
+next_pass = ExtResource("1_pocbq")
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2of1"]
+material = SubResource("StandardMaterial3D_dwfex")
+size = Vector3(1, 256, 1)
+
+[node name="Cell2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i2of1")

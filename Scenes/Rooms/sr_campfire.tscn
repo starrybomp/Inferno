@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="1_4ydkc"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_qay47"]
 [ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="5_g4wdr"]
-[ext_resource type="PackedScene" path="res://Props/log.tscn" id="6_lcw13"]
+[ext_resource type="PackedScene" uid="uid://c8va54vyh1wls" path="res://Props/log.tscn" id="6_lcw13"]
 [ext_resource type="PackedScene" uid="uid://cg5t3ic6nmyhl" path="res://Props/campfire.tscn" id="7_1i520"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbmdv"]

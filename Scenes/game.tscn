@@ -8,8 +8,8 @@
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="6_n1otv"]
 [ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
 [ext_resource type="PackedScene" uid="uid://cg5t3ic6nmyhl" path="res://Props/campfire.tscn" id="7_ujtdd"]
-[ext_resource type="PackedScene" path="res://Scenes/april.tscn" id="9_kkrt6"]
-[ext_resource type="PackedScene" path="res://Props/log.tscn" id="10_am7hp"]
+[ext_resource type="PackedScene" uid="uid://b76tqmkia0aeb" path="res://Scenes/april.tscn" id="9_kkrt6"]
+[ext_resource type="PackedScene" uid="uid://c8va54vyh1wls" path="res://Props/log.tscn" id="10_am7hp"]
 
 [sub_resource type="Environment" id="Environment_csfex"]
 

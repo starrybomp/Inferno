@@ -15,33 +15,33 @@ var directions : Dictionary = {
 	"left" : Vector3i.LEFT,"right" : Vector3i.RIGHT
 }
 
-func handle_none(cell:Node3D,dir:String):
-	cell.call("remove_door_"+dir)
+#func handle_none(cell:Node3D,dir:String):
+	#cell.call("remove_door_"+dir)
 	
-func handle_00(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_01(cell:Node3D,dir:String):
-	cell.call("remove_door_"+dir)
-func handle_02(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_10(cell:Node3D,dir:String):
-	cell.call("remove_door_"+dir)
-func handle_11(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_12(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_20(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_21(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-func handle_22(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
+#func handle_00(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
+#func handle_01(cell:Node3D,dir:String):
+	#cell.call("remove_door_"+dir)
+#func handle_02(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
+#func handle_10(cell:Node3D,dir:String):
+	#cell.call("remove_door_"+dir)
+#func handle_11(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
+#func handle_12(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
+#func handle_20(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
+#func handle_21(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+#func handle_22(cell:Node3D,dir:String):
+	#cell.call("remove_wall_"+dir)
+	#cell.call("remove_door_"+dir)
 
 func _ready():
 	generate()
@@ -84,24 +84,21 @@ func create_dungeon():
 		$Mesh.remove_child(c)
 		c.queue_free()
 	var t : int = 0
+	var dc2 = preload("res://Scenes/Cell2.tscn")
 	for cell in grid_map.get_used_cells():
 		var cell_index : int = grid_map.get_cell_item(cell)
+		print(cell_index)
 		if cell_index == 1 || cell_index == 2:
 			var dun_cell : Node3D = dun_cell_scene.instantiate()
-			dun_cell.position = Vector3(cell) + Vector3(0.5,0,0.5)
+			dun_cell.position = Vector3(cell) + Vector3(0,0.7,0)
 			$Mesh.add_child(dun_cell)
 			dun_cell.set_owner($Mesh.owner)
 			t += 1
 			for i in 4:
 				var cell_n : Vector3i = cell + directions.values()[i]
 				var cell_n_index : int = grid_map.get_cell_item(cell_n)
-				if cell_n_index ==-1\
-				|| cell_n_index == 3:
-					handle_none(dun_cell,directions.keys()[i])
-				else:
-					var key : String = str(cell_index) + str(cell_n_index)
-					call("handle_"+key,dun_cell,directions.keys()[i])
 		if t%10 == 9 : await get_tree().create_timer(0).timeout
+	print("finished adding cells")
 	t = 0
 	for i in range(room_positions.size()):
 		t += 1
@@ -112,8 +109,10 @@ func create_dungeon():
 		$Mesh.add_child(room)
 		room.set_owner($Mesh.owner)
 		if t%10 == 9 : await get_tree().create_timer(0).timeout
+	print("finished adding rooms")
 	var start_pos = Vector3(player_start_pos.x, player_start_pos.y + 2, player_start_pos.z)
 	$Player.position = start_pos
+	print("finished loading...")
 
 func visualize_border():
 	grid_map.clear()
@@ -122,7 +121,7 @@ func visualize_border():
 		grid_map.set_cell_item( Vector3i(i,0,border_size),3)
 		grid_map.set_cell_item( Vector3i(border_size,0,i),3)
 		grid_map.set_cell_item( Vector3i(-1,0,i),3)
-	$DirectionalLight3D.position = Vector3(border_size / 2, 25,  border_size / 2)
+	$DirectionalLight3D.position = Vector3(border_size / 2, 100,  border_size / 2)
 
 func generate():
 	for c in $Mesh.get_children():
@@ -136,7 +135,7 @@ func generate():
 	for i in room_number:
 		t+=1
 		make_room(room_recursion)
-		if t%17 == 16: await get_tree().create_timer(0).timeout
+		#if t%17 == 16: await get_tree().create_timer(0).timeout
 	end_room_index = room_positions.size() - 1
 
 	var rpv2 : PackedVector2Array = []
@@ -267,5 +266,5 @@ func create_hallways(hallway_graph: AStar2D):
 			var pos : Vector3i = Vector3i(t.x,0,t.y)
 			if grid_map.get_cell_item(pos) <0:
 				grid_map.set_cell_item(pos,1)
-		if _t%16 == 15: await get_tree().create_timer(0).timeout
+		#if _t%16 == 15: await get_tree().create_timer(0).timeout
 	
