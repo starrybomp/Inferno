@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="1_5gplm"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_hb8pb"]
-[ext_resource type="PackedScene" uid="uid://b76tqmkia0aeb" path="res://Scenes/april.tscn" id="3_7kik5"]
+[ext_resource type="PackedScene" path="res://Scenes/april.tscn" id="3_7kik5"]
 [ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="4_asjod"]
 [ext_resource type="Texture2D" uid="uid://cltjncfxuus54" path="res://Assets/20240303_232156.jpg" id="5_sbhjf"]
 

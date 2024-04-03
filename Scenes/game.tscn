@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://c88k0pg7qwg5p" path="res://Scenes/player.tscn" id="1_ttfir"]
 [ext_resource type="Texture2D" uid="uid://cuomloefqmm0n" path="res://Assets/me being annoying.png" id="2_w4ng6"]
-[ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="4_shjbx"]
+[ext_resource type="Texture2D" uid="uid://df8p3fmw3h6o5" path="res://Assets/Textures/grassimg.png" id="3_cme0d"]
 [ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="5_8g5ab"]
 [ext_resource type="Shader" path="res://Materials/psx.gdshader" id="5_qsh6d"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="6_n1otv"]
 [ext_resource type="Texture2D" uid="uid://cjkliy1yx366d" path="res://Assets/20240304_005043.jpg" id="6_rdbj5"]
 [ext_resource type="PackedScene" uid="uid://cg5t3ic6nmyhl" path="res://Props/campfire.tscn" id="7_ujtdd"]
-[ext_resource type="PackedScene" uid="uid://b76tqmkia0aeb" path="res://Scenes/april.tscn" id="9_kkrt6"]
-[ext_resource type="PackedScene" uid="uid://c8va54vyh1wls" path="res://Props/log.tscn" id="10_am7hp"]
+[ext_resource type="PackedScene" path="res://Scenes/april.tscn" id="9_kkrt6"]
+[ext_resource type="PackedScene" path="res://Props/log.tscn" id="10_am7hp"]
 
 [sub_resource type="Environment" id="Environment_csfex"]
 
@@ -30,7 +30,7 @@ shader = ExtResource("5_qsh6d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn87b"]
 next_pass = SubResource("ShaderMaterial_qeifo")
-albedo_texture = ExtResource("4_shjbx")
+albedo_texture = ExtResource("3_cme0d")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.316519
 

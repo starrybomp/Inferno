@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4j1jmj72vx3p" path="res://Assets/grass.png" id="1_l46sc"]
 [ext_resource type="Material" uid="uid://bv2bj1k5utyoe" path="res://Materials/psx.tres" id="2_4rjep"]
 [ext_resource type="PackedScene" uid="uid://yj4cvqslp7gh" path="res://Props/tree.tscn" id="3_smknn"]
-[ext_resource type="PackedScene" uid="uid://b76tqmkia0aeb" path="res://Scenes/april.tscn" id="4_ft5sx"]
+[ext_resource type="PackedScene" path="res://Scenes/april.tscn" id="4_ft5sx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45nns"]
 next_pass = ExtResource("2_4rjep")
